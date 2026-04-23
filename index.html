@@ -3,43 +3,121 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Memory Game</title>
+    <title>Document</title>
+    <style>
+      
+body{
+  margin:0px;
+  background-color:#000000b1;
+  
+}
+.container {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+  width: 600px;
+  margin: 120px auto;
+  padding: 10px;
+  background-color: #002A3A;
+  border-radius: 10px;
+}
+.container div {
+  background-color: #3c3b4f;
+  border: 8px solid #002A3A;
+  padding: 10px;
+  border-radius:20px;
+  height: 100px;
+  width: 100px;
+}
+.navbar ul{
+  list-style-type:none;
+  margin:0px;
+  padding:0px;
+  overflow:hidden;
+  display: flex;
+  justify-content: center;   
+  align-items: center;
+  gap: 20px;                 
+}
+
+.navbar h3{
+  display:block;
+  border-radius:15px;
+  height:auto;
+  width:auto;
+  margin:10px;
+  padding:15px;
+  text-align:center;
+  cursor:pointer;
+  background-color: #ff4d6b75;
+  
+}
+
+.navbar{
+  background-color: #00F7FF;
+  box-shadow:0 0 20px #450693;
+  
+  border-radius:20px;
+}
+header h1 {
+  font-family: rubik;
+  font-size: 40px;
+  color: white;
+}
+
+header{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 30px;
+  background-color:#FF3F7F;
+  top:-100px;
+  height:100px;
+}
+.jeux::first-letter,
+.carte::first-letter,
+.memoire::first-letter {
+  font-size: 60px;
+  color: yellow;
+}
+</style>
 </head>
 <body>
-
-<header>
-    <h1>Jeux Carte Memoire</h1>
-</header>
-
-<nav>
+  <header>
+    
+    <h1><span class="jeux">Jeux</span>
+        <span class="carte">Carte</span>
+        <span class="memoire">Memoire</span>
+    </h1>
+  </header>
+  <nav class="navbar">
     <ul>
-        <li>Home</li>
-        <li>Score</li>
-        <li>About</li>
-        <li>Contact</li>
+      <li><h3>Home</h3></li>
+      <li><h3>Score</h3></li>
+      <li><h3>About</h3></li>
+      <li><h3>Contact</h3></li>
     </ul>
-</nav>
-
-<main>
-    <div class="container">
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-    </div>
-</main>
-
+  </nav>
+  <main>
+  <div class="container">
+    <div id="1"></div>
+    <div id="2"></div>
+    <div id="3"></div>
+    <div id="4"></div>
+    <div id="5"></div>
+    <div id="6"></div>
+    <div id="7"></div>
+    <div id="8"></div>
+    <div id="9"></div>
+    <div id="10"></div>
+    <div id="11"></div>
+    <div id="12"></div>
+    <div id="13"></div>
+    <div id="14"></div>
+    <div id="15"></div>
+    <div id="16"></div>
+  </div>
+  </main>
+ 
 </body>
 </html>
