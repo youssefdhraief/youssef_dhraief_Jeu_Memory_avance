@@ -5,205 +5,130 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Jeux Memoire</title>
     <link rel="icon" type="image/mpeg" href="CardImages/card-games.png">
-    <style>
-       @font-face{
-        src:url(fonts/Tektur-VariableFont_wdth,wght.ttf);
-        font-family:tektur;
-      }
-      @font-face{
-        src:url(fonts/Foldit-VariableFont_wght.ttf);
-        font-family:foldit;
-      }
-      @font-face{
-        src:url(fonts/rubik.ttf);
-        font-family:rubik;
-      }
-
-
-
-@keyframes neonWave {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
-}
-
-
-@keyframes rgbFlow {
-  0% { filter: hue-rotate(0deg); }
-  100% { filter: hue-rotate(360deg); }
-}
-@keyframes shadow {
-  0% { box-shadow: 0 0 10px #00F7FF; }
-  50% { box-shadow: 0 0 30px #00F7FF; }
-  100% { box-shadow: 0 0 10px #00F7FF; }
-}
-body{
-  margin:0px;
-  background-color:#000000b1;
-  
-}
-.container {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 20px;
-  width: 600px;
-  margin: 120px auto;
-  padding: 10px;
-  background-color: #002A3A;
-  border-radius: 10px;
-  animation: shadow 2s infinite ease-in-out;
-}
-.container div {
-  background-color: #3c3b4f;
-  border: 8px solid #002A3A;
-  padding: 10px;
-  border-radius:20px;
-  height: 100px;
-  width: 100px;
-  transition:0.3s;
-  background: linear-gradient(45deg, #ff00cc, #00f7ff, #ff00cc);
-  background-size: 300% 300%;
-  cursor:pointer;
-  animation: neonWave 5s linear infinite;
-}
-.container div:hover{
-  transform:scale(1.1) rotate(2deg);
-  box-shadow:0 0 20px #ff00cc, 0 0 40px #00f7ff;
-}
-.container div img{
-  height:90px;
-  width:90px;
-  
-}
-.navbar ul{
-  list-style-type:none;
-  margin:0px;
-  padding:0px;
-  overflow:hidden;
-  display: flex;
-  justify-content: center;   
-  align-items: center;
-  gap: 20px;                 
-}
-.navbar h3:hover{
-  transform:scale(1.3);
-  background-color: #3c3b4f;
-  box-shadow:0 0 20px #ff00cc, 0 0 40px #00f7ff;
-}
-.navbar h3{
-  display:block;
-  border-radius:15px;
-  height:auto;
-  width:auto;
-  margin:10px;
-  padding:15px;
-  text-align:center;
-  cursor:pointer;
-  background-color: #ff4d6b75;
-  
-}
-
-.navbar{
-  background-color: #00F7FF;
-  box-shadow:0 0 20px #450693;
-  position:absolute;
-  right:80px;
-  left:80px;
-  border-radius:20px;
-}
-header h1{
-  text-align:center;
-  padding:0px;
-  margin:0px;
-  font-family:"rubik";
-  color:white;
-  text-shadow:0 0 0.7px #fff, 0 0 10px #05da05;
-}
-header h1::first-letter{
-  color:purple;
-  font-size:40px;
-}
-header{
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 30px;
-  background-color:#FF3F7F;
-  top:-100px;
-  height:100px;
-  transition:5s;
-  animation:rgbFlow 10s infinite;
-}
-header img{
-  height:70px;
-  width: 70px;
-  top:-100px;
-}
-span::first-letter {
-  font-size: 60px;
-  color: rgb(194, 194, 14);
-}
-.pinkleftside{
-  position:absolute;
-  top:100px;
-  background-color: #FF3F7F;
-  z-index: -1;
-  width:100px;
-  height:100vh;
-  animation:rgbFlow 10s infinite;
-}
-
-.pinkrightside{
-  position:absolute;
-  top:100px;
-  right:0;
-  background-color: #FF3F7F;
-  z-index: -1;
-  width:100px;
-  height:100vh;
-  animation:rgbFlow 10s infinite;
-}
-</style>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <header>
     <img src="CardImages/card-game.png">
     <h1>
-      <span class="jeux">Jeux</span>
-      <span class="carte">Carte</span>
-      <span class="memoire">Memoire</span>
+      Jeux Carte Memoire
     </h1>
   </header>
   <nav class="navbar">
     <ul>
-      <li><h3>Home</h3></li>
-      <li><h3>Score</h3></li>
-      <li><h3>About</h3></li>
-      <li><h3>Contact</h3></li>
+      <li><h3 onclick="pages('home')">Home</h3></li>
+      <li><h3 onclick="pages('guide')">Guide</h3></li>
+      <li><h3 onclick="pages('histoire')">Score</h3></li>
+      <li><h3 onclick="pages('contact')">Contact</h3></li>
     </ul>
   </nav>
   <main>
   <div class="pinkrightside"></div>
   <div class="pinkleftside"></div>
-  <div class="container">
-    <div id="1"><img src="CardImages/pear.png"></div>
-    <div id="2"><img src="CardImages/apple.png"></div>
-    <div id="3"><img src="CardImages/bananas.png"></div>
-    <div id="4"><img src="CardImages/blueberry.png"></div>
-    <div id="5"><img src="CardImages/grape.png"></div>
-    <div id="6"><img src="CardImages/bananas.png"></div>
-    <div id="7"><img src="CardImages/blueberry.png"></div>
-    <div id="8"><img src="CardImages/grape.png"></div>
-    <div id="9"><img src="CardImages/apple.png"></div>
-    <div id="10"><img src="CardImages/pear.png"></div>
-    <div id="11"><img src="CardImages/strawberry.png"></div>
-    <div id="12"><img src="CardImages/watermelon.png"></div>
-    <div id="13"><img src="CardImages/passion-fruit.png"></div>
-    <div id="14"><img src="CardImages/strawberry.png"></div>
-    <div id="15"><img src="CardImages/watermelon.png"></div>
-    <div id="16"><img src="CardImages/passion-fruit.png"></div>
+  
+  <div id="contact">
+    <h1>👤 À propos de moi</h1>
+    <hr>
+    <h3>🎓 Formation</h3>
+    <p>Étudiant en Le Cycle Préparatoire Intégré à la Faculté des sciences de Tunis (FST), passionné par le développement web et les projets interactifs.</p>
+    <h3>💻 Compétences techniques</h3>
+    <p>Je travaille principalement avec :<br>
+    HTML5 • CSS3 • JavaScript (ES6+) • Responsive Design • Animations CSS • Manipulation du DOM • Gestion d’événements • LocalStorage • Git</p>
+    <h3>🧠Ce projet</h3>
+    <p>Ce jeu de mémoire a été réalisé dans le cadre d’un projet évalué.</p>
+
+    <p>L’objectif était de créer un jeu interactif et agréable, tout en mettant en pratique mes compétences en développement front-end.</p>
+
+    <pre>Le projet propose :
+        un mode solo
+        un mode 1v1 local
+        un mode contre un bot simple</pre>
+    <h3>🚀 Technologies utilisées</h3>
+    <p>Le projet est entièrement développé avec :</p>
+
+    <p>HTML5 • CSS3 • JavaScript pur</p>
+
+    <p>Sans utilisation de bibliothèques externes, ce qui m'a permis de mieux comprendre les bases du développement web et la gestion des interactions utilisateur.</p></div>
+  <div id="histoire"></div>
+  <div id="guide">
+
+<h1>🎮 Comment Jouer</h1>
+<div class="card-row">
+<div class="rule-card">
+  <h3>🧍 Solo</h3>
+  <p>Trouve les paires dans le temps imparti selon la difficulté.</p>
+</div>
+
+<div class="rule-card">
+  <h3>⚔️ Multijoueur / Bot</h3>
+  <p>Meilleur score sur 3 manches. La difficulté augmente à chaque tour.</p>
+</div>
+</div>
+<h1>🃏 Cartes spéciales</h1>
+
+<div class="card-row">
+
+  <div class="rule-card">
+    <h3>❌ Paralysie (20 pts)</h3>
+    <p>Saute le tour de l’adversaire</p>
+  </div>
+
+  <div class="rule-card">
+    <h3>👁️ AkuAku (10 pts)</h3>
+    <p>Révèle une carte sans perdre ton tour</p>
+  </div>
+
+  <div class="rule-card">
+    <h3>🔄 Permutation (5 pts)</h3>
+    <p>Échange la position de 2 cartes</p>
+  </div>
+
+</div>
+
+<h1>📌 Règles</h1>
+<div class="card-row">
+<div class="rule-card">
+  <p><b>Score :</b> chaque match réussi double le score (base 1)</p>
+</div>
+
+<div class="rule-card">
+  <p><b>Achat :</b> utilise ton score pour acheter des cartes</p>
+</div>
+
+<div class="rule-card">
+  <p><b>Rareté :</b> plus rare = plus cher</p>
+</div>
+
+<div class="rule-card">
+  <p><b>2 joueurs :</b> meilleur score gagne si temps écoulé</p>
+</div>
+</div>
+</div>
+  <div id="home">
+    <div class="info">
+    <div class="score">Score : 0</div>
+    <div class="bouge">Bouge : 0</div>
+  </div>
+    <div class="container">
+      <div class="card"><img src=""></div>
+      <div class="card"><img src=""></div>
+      <div class="card"><img src=""></div>
+      <div class="card"><img src=""></div>
+      <div class="card"><img src=""></div>
+      <div class="card"><img src=""></div>
+      <div class="card"><img src=""></div>
+      <div class="card"><img src=""></div>
+      <div class="card"><img src=""></div>
+      <div class="card"><img src=""></div>
+      <div class="card"><img src=""></div>
+      <div class="card"><img src=""></div>
+      <div class="card"><img src=""></div>
+      <div class="card"><img src=""></div>
+      <div class="card"><img src=""></div>
+      <div class="card"><img src=""></div>
+    </div>
   </div>
   </main>
- 
+ <script src="script.js"></script>
 </body>
 </html>
