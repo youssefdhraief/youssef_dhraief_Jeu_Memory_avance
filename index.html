@@ -1,134 +1,172 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Jeux Memoire</title>
+    <!-- icône qui s'affiche dans l'onglet du navigateur -->
     <link rel="icon" type="image/mpeg" href="CardImages/card-games.png">
+    <!-- lien vers le fichier de style CSS -->
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+
+  <!-- en-tête de la page avec le logo et le titre -->
   <header>
     <img src="CardImages/card-game.png">
     <h1>
       Jeux Carte Memoire
     </h1>
   </header>
+
+  <!-- barre de navigation avec les 4 pages principales -->
   <nav class="navbar">
     <ul>
-      <li><h3 onclick="pages('home')">Home</h3></li>
+      <li><h3 onclick="pages('home')">Accueil</h3></li>
       <li><h3 onclick="pages('guide')">Guide</h3></li>
       <li><h3 onclick="pages('histoire')">Score</h3></li>
       <li><h3 onclick="pages('contact')">Contact</h3></li>
     </ul>
   </nav>
+
   <main>
-  <div class="pinkrightside"></div>
-  <div class="pinkleftside"></div>
-  
-  <div id="contact">
-    <h1>👤 À propos de moi</h1>
-    <hr>
-    <h3>🎓 Formation</h3>
-    <p>Étudiant en Le Cycle Préparatoire Intégré à la Faculté des sciences de Tunis (FST), passionné par le développement web et les projets interactifs.</p>
-    <h3>💻 Compétences techniques</h3>
-    <p>Je travaille principalement avec :<br>
-    HTML5 • CSS3 • JavaScript (ES6+) • Responsive Design • Animations CSS • Manipulation du DOM • Gestion d’événements • LocalStorage • Git</p>
-    <h3>🧠Ce projet</h3>
-    <p>Ce jeu de mémoire a été réalisé dans le cadre d’un projet évalué.</p>
+    <!-- décorations sur les côtés gauche et droit de la page -->
+    <div class="pinkrightside"></div>
+    <div class="pinkleftside"></div>
 
-    <p>L’objectif était de créer un jeu interactif et agréable, tout en mettant en pratique mes compétences en développement front-end.</p>
-
-    <pre>Le projet propose :
-        un mode solo
-        un mode 1v1 local
-        un mode contre un bot simple</pre>
-    <h3>🚀 Technologies utilisées</h3>
-    <p>Le projet est entièrement développé avec :</p>
-
-    <p>HTML5 • CSS3 • JavaScript pur</p>
-
-    <p>Sans utilisation de bibliothèques externes, ce qui m'a permis de mieux comprendre les bases du développement web et la gestion des interactions utilisateur.</p></div>
-  <div id="histoire"></div>
-  <div id="guide">
-
-<h1>🎮 Comment Jouer</h1>
-<div class="card-row">
-<div class="rule-card">
-  <h3>🧍 Solo</h3>
-  <p>Trouve les paires dans le temps imparti selon la difficulté.</p>
-</div>
-
-<div class="rule-card">
-  <h3>⚔️ Multijoueur / Bot</h3>
-  <p>Meilleur score sur 3 manches. La difficulté augmente à chaque tour.</p>
-</div>
-</div>
-<h1>🃏 Cartes spéciales</h1>
-
-<div class="card-row">
-
-  <div class="rule-card">
-    <h3>❌ Paralysie (20 pts)</h3>
-    <p>Saute le tour de l’adversaire</p>
-  </div>
-
-  <div class="rule-card">
-    <h3>👁️ AkuAku (10 pts)</h3>
-    <p>Révèle une carte sans perdre ton tour</p>
-  </div>
-
-  <div class="rule-card">
-    <h3>🔄 Permutation (5 pts)</h3>
-    <p>Échange la position de 2 cartes</p>
-  </div>
-
-</div>
-
-<h1>📌 Règles</h1>
-<div class="card-row">
-<div class="rule-card">
-  <p><b>Score :</b> chaque match réussi double le score (base 1)</p>
-</div>
-
-<div class="rule-card">
-  <p><b>Achat :</b> utilise ton score pour acheter des cartes</p>
-</div>
-
-<div class="rule-card">
-  <p><b>Rareté :</b> plus rare = plus cher</p>
-</div>
-
-<div class="rule-card">
-  <p><b>2 joueurs :</b> meilleur score gagne si temps écoulé</p>
-</div>
-</div>
-</div>
-  <div id="home">
-    <div class="info">
-    <div class="score">Score : 0</div>
-    <div class="bouge">Bouge : 0</div>
-  </div>
-    <div class="container">
-      <div class="card"><img src=""></div>
-      <div class="card"><img src=""></div>
-      <div class="card"><img src=""></div>
-      <div class="card"><img src=""></div>
-      <div class="card"><img src=""></div>
-      <div class="card"><img src=""></div>
-      <div class="card"><img src=""></div>
-      <div class="card"><img src=""></div>
-      <div class="card"><img src=""></div>
-      <div class="card"><img src=""></div>
-      <div class="card"><img src=""></div>
-      <div class="card"><img src=""></div>
-      <div class="card"><img src=""></div>
-      <div class="card"><img src=""></div>
-      <div class="card"><img src=""></div>
-      <div class="card"><img src=""></div>
+    <!-- section À propos / contact -->
+    <div id="contact">
+      <h1>👤 À propos de moi</h1>
+      <hr>
+      <h3>🎓 Formation</h3>
+      <p>Étudiant en Le Cycle Préparatoire Intégré à la Faculté des sciences de Tunis (FST), passionné par le développement web et les projets interactifs.</p>
+      <h3>💻 Compétences techniques</h3>
+      <p>Je travaille principalement avec :<br>
+      HTML5 • CSS3 • JavaScript (ES6+) • Responsive Design • Animations CSS • Manipulation du DOM • Gestion d'événements • LocalStorage • Git</p>
+      <h3>🧠 Ce projet</h3>
+      <p>Ce jeu de mémoire a été réalisé dans le cadre d'un projet évalué.</p>
+      <p>L'objectif était de créer un jeu interactif et agréable, tout en mettant en pratique mes compétences en développement front-end.</p>
+      <pre>Le projet propose :
+          un mode solo
+          un mode 1v1 local
+          un mode contre un bot simple</pre>
+      <h3>🚀 Technologies utilisées</h3>
+      <p>Le projet est entièrement développé avec :</p>
+      <p>HTML5 • CSS3 • JavaScript pur</p>
+      <p>Sans utilisation de bibliothèques externes, ce qui m'a permis de mieux comprendre les bases du développement web et la gestion des interactions utilisateur.</p>
     </div>
-  </div>
+
+    <!-- section historique des scores -->
+    <div id="histoire"></div>
+
+    <!-- section guide / règles du jeu -->
+    <div id="guide">
+      <h1>🎮 Comment Jouer</h1>
+
+      <!-- cartes expliquant les modes de jeu -->
+      <div class="card-row">
+        <div class="rule-card">
+          <h3>🧍 Solo</h3>
+          <p>Trouve les paires dans le temps imparti selon la difficulté.</p>
+        </div>
+        <div class="rule-card">
+          <h3>⚔️ Multijoueur / Bot</h3>
+          <p>Meilleur score sur 3 manches. La difficulté augmente à chaque tour.</p>
+        </div>
+      </div>
+
+      <h1>🃏 Cartes spéciales</h1>
+
+      <!-- description des cartes spéciales avec leurs effets -->
+      <div class="card-row">
+        <div class="rule-card">
+          <h3>👁️ AkuAku (10 pts)</h3>
+          <p>Révèle une carte sans perdre ton tour</p>
+        </div>
+        <div class="rule-card">
+          <h3>🔄 Permutation (5 pts)</h3>
+          <p>Échange la position de 2 cartes</p>
+        </div>
+      </div>
+
+      <h1>📌 Règles</h1>
+
+      <!-- règles générales du jeu -->
+      <div class="card-row">
+        <div class="rule-card">
+          <p><b>Score :</b> chaque match réussi double le score (base 1)</p>
+        </div>
+        <div class="rule-card">
+          <p><b>Achat :</b> utilise ton score pour acheter des cartes</p>
+        </div>
+        <div class="rule-card">
+          <p><b>Rareté :</b> plus rare = plus cher</p>
+        </div>
+        <div class="rule-card">
+          <p><b>2 joueurs :</b> meilleur score gagne si temps écoulé</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- menu principal pour choisir la difficulté -->
+    <div id="menu">
+      <h1>🎮 Jeu de Mémoire</h1>
+      <!-- chaque bouton lance le jeu avec une grille différente -->
+      <button onclick="startGame(4,3)">Facile (4x3)</button>
+      <button onclick="startGame(4,4)">Moyen (4x4)</button>
+      <button onclick="startGame(5,4)">Difficile (5x4)</button>
+    </div>
+
+    <!-- zone principale du jeu (cachée au départ) -->
+    <div id="home">
+
+      <!-- affichage du score et du nombre de mouvements -->
+      <div class="info">
+        <div class="score" >Score : 0</div>
+        <div class="bouge">Bouges : 0</div>
+      </div>
+
+      <!-- grille de cartes générée dynamiquement par le JavaScript -->
+      <div class="container">
+        <!-- 20 cartes au total, les images sont chargées via le script -->
+        <div class="card"><img src=""></div>
+        <div class="card"><img src=""></div>
+        <div class="card"><img src=""></div>
+        <div class="card"><img src=""></div>
+        <div class="card"><img src=""></div>
+        <div class="card"><img src=""></div>
+        <div class="card"><img src=""></div>
+        <div class="card"><img src=""></div>
+        <div class="card"><img src=""></div>
+        <div class="card"><img src=""></div>
+        <div class="card"><img src=""></div>
+        <div class="card"><img src=""></div>
+        <div class="card"><img src=""></div>
+        <div class="card"><img src=""></div>
+        <div class="card"><img src=""></div>
+        <div class="card"><img src=""></div>
+        <div class="card"><img src=""></div>
+        <div class="card"><img src=""></div>
+        <div class="card"><img src=""></div>
+        <div class="card"><img src=""></div>
+      </div>
+
+      <!-- boutons des pouvoirs spéciaux -->
+      <div class="powerups">
+        <!-- pouvoir AkuAku : révèle une carte -->
+        <button id="revealBtn">
+          <img src="CardImages/akuaku.png" alt="révéler">
+        </button>
+        <!-- pouvoir permutation : échange deux cartes -->
+        <button id="changeBtn">
+          <img src="CardImages/swap.png" alt="échanger">
+        </button>
+      </div>
+
+    </div>
   </main>
- <script src="script.js"></script>
+
+  <!-- script principal qui gère toute la logique du jeu -->
+  <script src="script.js"></script>
 </body>
 </html>

@@ -1,263 +1,433 @@
+/* animation qui fait bouger le dégradé de couleurs comme une vague */
 @keyframes neonWave {
   0% { background-position: 0% 50%; }
   50% { background-position: 100% 50%; }
   100% { background-position: 0% 50%; }
 }
+
+/* animation qui fait tourner les couleurs en arc-en-ciel */
 @keyframes rgbFlow {
   0% { filter: hue-rotate(0deg); }
   100% { filter: hue-rotate(360deg); }
 }
+
+/* animation pour faire pulser l'ombre autour de la grille */
 @keyframes shadow {
   0% { box-shadow: 0 0 10px #00F7FF; }
   50% { box-shadow: 0 0 30px #00F7FF; }
   100% { box-shadow: 0 0 10px #00F7FF; }
 }
-body{
-  margin:0px;
-  background-color:#000000b1;
+/* animation secousse pour la permutation : agrandit et tremble avant l'échange */
+@keyframes shake {
+  0%, 100% { transform: scale(1.3) translateX(0); }
+  20%       { transform: scale(1.3) translateX(-10px); }
+  40%       { transform: scale(1.3) translateX(10px); }
+  60%       { transform: scale(1.3) translateX(-10px); }
+  80%       { transform: scale(1.3) translateX(10px); }
+}
+
+/* le !important force la secousse à remplacer l'animation neonWave */
+.shake {
+  animation: shake 0.5s ease !important;
+}
+
+/* menu principal centré verticalement avec les boutons de difficulté */
+#menu {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 80vh;
+  gap: 20px;
+  color: white;
+}
+
+/* style des boutons du menu avec un dégradé rose/cyan */
+#menu button {
+  padding: 15px 30px;
+  font-size: 18px;
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+  background: linear-gradient(45deg, #ff00cc, #00f7ff);
+  color: white;
+  transition: 0.3s;
+}
+
+/* légère mise en avant au survol */
+#menu button:hover {
+  transform: scale(1.1);
+}
+
+/* la zone de jeu est cachée au départ, le JS l'affiche quand on commence */
+#home {
+  display: none;
+}
+
+/* style général du body : fond sombre, police propre, scroll vertical */
+body {
+  margin: 0px;
+  background-color: #000000b1;
   font-family: Arial, sans-serif;
   overflow-y: auto;
   overflow-x: hidden;
 }
+
+/* empêche la sélection de texte sur toute la page */
 ::selection {
   background: transparent;
   user-select: none;
 }
+
+/* grille principale des cartes, centrée avec une ombre animée */
 .container {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 15px;
-  width: 90vw;           
-  max-width: 600px; 
+  gap: 10px;
+  width: 90vw;
+  max-width: 600px;
   margin: 90px auto 20px auto;
   padding: 10px;
   background-color: #002A3A;
   border-radius: 10px;
-  justify-content: center;
   animation: shadow 2s infinite ease-in-out;
 }
+
+/* style de chaque carte : dégradé animé, coins arrondis, taille fixe */
 .container div {
   background-color: #3c3b4f;
   border: 8px solid #002A3A;
   padding: 10px;
-  border-radius:20px;
+  border-radius: 20px;
   height: 100px;
   width: 100px;
-  transition:0.3s;
+  transition: 0.3s;
   background: linear-gradient(45deg, #ff00cc, #00f7ff, #ff00cc);
   background-size: 300% 300%;
-  cursor:pointer;
+  cursor: pointer;
   animation: neonWave 5s linear infinite;
 }
-.container div:hover{
-  transform:scale(1.1) rotate(2deg);
-  box-shadow:0 0 20px #ff00cc, 0 0 40px #00f7ff;
+
+/* effet au survol d'une carte : légère rotation et lueur colorée */
+.container div:hover {
+  transform: scale(1.1) rotate(2deg);
+  box-shadow: 0 0 20px #ff00cc, 0 0 40px #00f7ff;
 }
+
+/* effet quand on clique sur une carte */
 .container div:active {
   transform: scale(0.95);
 }
-.card.disabled{
+
+/* classe ajoutée par le JS pour désactiver une carte retournée/trouvée */
+.card.disabled {
   pointer-events: none;
 }
-.container div img{
-  height:90px;
-  width:90px;
-    user-select: none;
-    pointer-events: none;
+
+/* taille de l'image à l'intérieur de chaque carte */
+.container div img {
+  height: 90px;
+  width: 90px;
+  user-select: none;
+  pointer-events: none;
 }
-.navbar ul{
-  list-style-type:none;
-  margin:0px;
-  padding:0px;
-  overflow:hidden;
+
+/* barre de navigation : liste horizontale centrée */
+.navbar ul {
+  list-style-type: none;
+  margin: 0px;
+  padding: 0px;
+  overflow: hidden;
   display: flex;
-  justify-content: center;   
+  justify-content: center;
   align-items: center;
-  gap: 20px;                 
+  gap: 20px;
 }
-.encours{
-    background-color:#05da05;
+
+/* classe pour marquer l'onglet actif en vert */
+.encours {
+  background-color: #05da05;
 }
-.navbar h3:hover{
-  transform:scale(1.3);
+
+/* effet au survol des liens de navigation */
+.navbar h3:hover {
+  transform: scale(1.3);
   background-color: #3c3b4f;
-  box-shadow:0 0 20px #ff00cc, 0 0 40px #00f7ff;
+  box-shadow: 0 0 20px #ff00cc, 0 0 40px #00f7ff;
 }
+
+/* effet au clic sur un lien de navigation */
 .navbar h3:active {
   transform: scale(0.95);
 }
-.navbar h3{
-  display:block;
-  border-radius:15px;
-  height:auto;
-  width:auto;
-  margin:10px;
-  padding:15px;
-  text-align:center;
-  cursor:pointer;
+
+/* style de base des liens de navigation */
+.navbar h3 {
+  display: block;
+  border-radius: 15px;
+  height: auto;
+  width: auto;
+  margin: 10px;
+  padding: 15px;
+  text-align: center;
+  cursor: pointer;
   background-color: #ff4d6b75;
-  
-}
-.navbar{
-  background-color: #00F7FF;
-  box-shadow:0 0 20px #450693;
-  position:absolute;
-  right:80px;
-  left:80px;
-  border-radius:20px;
 }
 
-header h1{
-  text-align:center;
-  padding:0px;
-  margin:0px;
-  color:white;
-  text-shadow:0 0 0.7px #fff, 0 0 10px #05da05;
+/* barre de navigation positionnée en haut avec une lueur violette */
+.navbar {
+  background-color: #00F7FF;
+  box-shadow: 0 0 20px #450693;
+  position: absolute;
+  right: 80px;
+  left: 80px;
+  border-radius: 20px;
 }
-header{
+
+/* titre dans le header centré et avec une lueur verte */
+header h1 {
+  text-align: center;
+  padding: 0px;
+  margin: 0px;
+  color: white;
+  text-shadow: 0 0 0.7px #fff, 0 0 10px #05da05;
+}
+
+/* header avec animation RGB, hauteur fixe et disposition en ligne */
+header {
   display: flex;
   justify-content: center;
   align-items: center;
   gap: 30px;
-  background-color:#FF3F7F;
-  top:-100px;
-  height:100px;
-  transition:5s;
-  animation:rgbFlow 10s infinite;
+  background-color: #FF3F7F;
+  top: -100px;
+  height: 100px;
+  transition: 5s;
+  animation: rgbFlow 10s infinite;
 }
-header img{
-  height:70px;
+
+/* logo dans le header */
+header img {
+  height: 70px;
   width: 70px;
-  top:-100px;
+  top: -100px;
 }
-.pinkleftside{
-  position:absolute;
-  top:100px;
+
+/* bande décorative colorée sur le côté gauche de la page */
+.pinkleftside {
+  position: absolute;
+  top: 100px;
   background-color: #FF3F7F;
   z-index: -1;
-  width:100px;
-  height:100vh;
-  animation:rgbFlow 10s infinite;
+  width: 100px;
+  height: 100vh;
+  animation: rgbFlow 10s infinite;
 }
-.pinkrightside{
-  position:absolute;
-  top:100px;
-  right:0;
+
+/* bande décorative colorée sur le côté droit de la page */
+.pinkrightside {
+  position: absolute;
+  top: 100px;
+  right: 0;
   background-color: #FF3F7F;
   z-index: -1;
-  width:100px;
-  height:100vh;
-  animation:rgbFlow 10s infinite;
+  width: 100px;
+  height: 100vh;
+  animation: rgbFlow 10s infinite;
 }
+
+/* responsive : on réduit la grille sur les écrans moyens */
 @media (max-width: 900px) {
   .container {
     transform: scale(0.85);
     transform-origin: top center;
   }
 }
+
+/* responsive : encore plus petit sur les petits écrans */
 @media (max-width: 700px) {
   .container {
     transform: scale(0.7);
   }
   .container div {
-     height: 70px;
-     width: 70px;
+    height: 70px;
+    width: 70px;
   }
-  .container div img{
-     height:60px;
-     width:60px;
+  .container div img {
+    height: 60px;
+    width: 60px;
   }
   .navbar h3 {
     padding: 8px 12px;
     font-size: 14px;
   }
 }
+
+/* responsive : version très compacte pour les téléphones */
 @media (max-width: 500px) {
   .container {
-      transform: scale(0.55);
+    transform: scale(0.55);
   }
   .container div {
-     height: 50px;
-     width: 50px;
+    height: 50px;
+    width: 50px;
   }
-  .container div img{
-     height:40px;
-     width:40px;
+  .container div img {
+    height: 40px;
+    width: 40px;
   }
   .navbar h3 {
     padding: 6px 10px;
     font-size: 12px;
-    gap: 10px;  
+    gap: 10px;
   }
 }
-.score{
-  width:120px;
-  height:30px;
-  position:relative;
-  left:150px;
-  top:80px;
-  border-radius:10px;
-  box-shadow:0 0 20px #34af12, 0 0 40px #00f7ff;
-  text-align:center;
-  align-content:center;
-  background-color:#1a80dab1;
-  font-size:20px;
-  color:#000000be;
+
+/* affichage du score en haut à gauche de la grille */
+.score {
+  width: 120px;
+  height: 30px;
+  position: relative;
+  left: 150px;
+  top: 80px;
+  border-radius: 10px;
+  box-shadow: 0 0 20px #34af12, 0 0 40px #00f7ff;
+  text-align: center;
+  align-content: center;
+  background-color: #1a80dab1;
+  font-size: 20px;
+  color: #000000be;
 }
-.bouge{
-  width:120px;
-  height:30px;
-  position:absolute;
-  right:150px;
-  top:180px;
-  border-radius:10px;
-  box-shadow:0 0 20px #34af12, 0 0 40px #00f7ff;
-  text-align:center;
-  align-content:center;
-  background-color:#1a80dab1;
-  font-size:20px;
-  color:#000000be;
+
+/* affichage du nombre de mouvements en haut à droite */
+.bouge {
+  width: 120px;
+  height: 30px;
+  position: absolute;
+  right: 150px;
+  top: 180px;
+  border-radius: 10px;
+  box-shadow: 0 0 20px #34af12, 0 0 40px #00f7ff;
+  text-align: center;
+  align-content: center;
+  background-color: #1a80dab1;
+  font-size: 20px;
+  color: #000000be;
 }
-#contact{
-    display:none;
-    font-size:14px;
+
+/* section contact cachée par défaut, affichée via le JS */
+#contact {
+  display: none;
+  font-size: 14px;
 }
-#guide{
-    font-size:12px;
-    display:none;
+
+/* section guide cachée par défaut, affichée via le JS */
+#guide {
+  font-size: 12px;
+  display: none;
 }
-#guide,#contact{
-    background-color:#002A3A;
-    border-radius:20px;
-    max-height:800px;
-    max-width:1000px;
-    margin: 100px auto;
-    padding: 20px;
-    font-family: 'Orbitron', sans-serif;       
-    color: white; 
-    
+
+/* style commun aux sections guide et contact */
+#guide, #contact {
+  background-color: #002A3A;
+  border-radius: 20px;
+  max-height: 800px;
+  max-width: 1000px;
+  margin: 100px auto;
+  padding: 20px;
+  font-family: 'Orbitron', sans-serif;
+  color: white;
 }
+
+/* carte de règle individuelle avec bordure cyan et fond semi-transparent */
 .rule-card {
-    background: rgba(0, 247, 255, 0.08);
-    border: 1px solid #00f7ff;
-
-    padding: 12px;
-    margin: 10px 0;
-
-    border-radius: 12px;
-
-    box-shadow: 0 0 10px #00f7ff33;
-    transition: 0.3s;
+  background: rgba(0, 247, 255, 0.08);
+  border: 1px solid #00f7ff;
+  padding: 12px;
+  margin: 10px 0;
+  border-radius: 12px;
+  box-shadow: 0 0 10px #00f7ff33;
+  transition: 0.3s;
 }
+
+/* ligne qui contient plusieurs cartes côte à côte */
 .card-row {
-    display: flex;
-    gap: 10px;
-    width: 100%;
+  display: flex;
+  gap: 10px;
+  width: 100%;
 }
+
+/* chaque carte prend le même espace dans la ligne */
 .card-row .rule-card {
-    flex: 1; 
+  flex: 1;
 }
+
+/* effet au survol d'une carte de règle */
 .rule-card:hover {
-    transform: scale(1.03);
-    box-shadow: 0 0 20px #00f7ff, 0 0 40px #ff00cc;
+  transform: scale(1.03);
+  box-shadow: 0 0 20px #00f7ff, 0 0 40px #ff00cc;
+}
+
+/* bouton du pouvoir AkuAku (révéler une carte) */
+#revealBtn {
+  margin-left: 10px;
+  padding: 5px 10px;
+  border-radius: 8px;
+  cursor: pointer;
+  border: none;
+}
+
+/* bouton du pouvoir permutation (échanger deux cartes) */
+#changeBtn {
+  margin-left: 10px;
+  padding: 5px 10px;
+  border-radius: 8px;
+  cursor: pointer;
+  border: none;
+}
+
+/* conteneur des boutons de pouvoirs, centré avec de l'espace entre eux */
+.powerups {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin-top: 20px;
+}
+
+/* style de base des boutons de pouvoirs : fond transparent, grande taille */
+.powerups button {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  width: 240px;
+  height: 250px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: 0.3s;
+}
+
+/* l'image remplit tout le bouton en gardant ses proportions */
+.powerups button img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  pointer-events: none;
+}
+
+/* effet au survol d'un bouton de pouvoir */
+.powerups button:hover {
+  transform: scale(1.1);
+  filter: drop-shadow(0 0 10px #00f7ff);
+}
+
+/* effet au clic sur un bouton de pouvoir */
+.powerups button:active {
+  transform: scale(0.95);
+}
+
+/* style quand un pouvoir a déjà été utilisé : grisé et désactivé */
+.powerups button.used {
+  opacity: 0.3;
+  pointer-events: none;
+  filter: grayscale(1);
 }
