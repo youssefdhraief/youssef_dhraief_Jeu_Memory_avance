@@ -3,170 +3,189 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Jeux Memoire</title>
-    <!-- icône qui s'affiche dans l'onglet du navigateur -->
+    <title>Jeux Mémoire</title>
+    <!-- icône de l'onglet -->
     <link rel="icon" type="image/mpeg" href="CardImages/card-games.png">
-    <!-- lien vers le fichier de style CSS -->
+    <!-- feuille de style -->
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-  <!-- en-tête de la page avec le logo et le titre -->
+  <!-- en-tête avec logo et titre -->
   <header>
-    <img src="CardImages/card-game.png">
-    <h1>
-      Jeux Carte Memoire
-    </h1>
+    <img src="CardImages/card-game.png" alt="logo">
+    <h1>Jeux Carte Mémoire</h1>
   </header>
 
-  <!-- barre de navigation avec les 4 pages principales -->
+  <!-- barre de navigation -->
   <nav class="navbar">
     <ul>
-      <li><h3 onclick="pages('home')">Accueil</h3></li>
-      <li><h3 onclick="pages('guide')">Guide</h3></li>
-      <li><h3 onclick="pages('histoire')">Score</h3></li>
-      <li><h3 onclick="pages('contact')">Contact</h3></li>
+      <li><h3 onclick="naviguer('accueil')">Accueil</h3></li>
+      <li><h3 onclick="naviguer('guide')">Guide</h3></li>
+      <li><h3 onclick="naviguer('histoire')">Scores</h3></li>
+      <li><h3 onclick="naviguer('contact')">Contact</h3></li>
     </ul>
   </nav>
 
   <main>
-    <!-- décorations sur les côtés gauche et droit de la page -->
+    <!-- décorations latérales -->
     <div class="pinkrightside"></div>
     <div class="pinkleftside"></div>
 
-    <!-- section À propos / contact -->
+    <!--  CONTACT  -->
     <div id="contact">
       <h1>👤 À propos de moi</h1>
       <hr>
       <h3>🎓 Formation</h3>
-      <p>Étudiant en Le Cycle Préparatoire Intégré à la Faculté des sciences de Tunis (FST), passionné par le développement web et les projets interactifs.</p>
       <h3>💻 Compétences techniques</h3>
       <p>Je travaille principalement avec :<br>
       HTML5 • CSS3 • JavaScript (ES6+) • Responsive Design • Animations CSS • Manipulation du DOM • Gestion d'événements • LocalStorage • Git</p>
       <h3>🧠 Ce projet</h3>
       <p>Ce jeu de mémoire a été réalisé dans le cadre d'un projet évalué.</p>
       <p>L'objectif était de créer un jeu interactif et agréable, tout en mettant en pratique mes compétences en développement front-end.</p>
-      <pre>Le projet propose :
-          un mode solo
-          un mode 1v1 local
-          un mode contre un bot simple</pre>
       <h3>🚀 Technologies utilisées</h3>
-      <p>Le projet est entièrement développé avec :</p>
-      <p>HTML5 • CSS3 • JavaScript pur</p>
-      <p>Sans utilisation de bibliothèques externes, ce qui m'a permis de mieux comprendre les bases du développement web et la gestion des interactions utilisateur.</p>
+      <p>HTML5 • CSS3 • JavaScript pur — sans bibliothèques externes.</p>
     </div>
 
-    <!-- section historique des scores -->
+    <!--  LEADERBOARD  -->
+    <!-- contenu généré dynamiquement par le JS -->
     <div id="histoire"></div>
 
-    <!-- section guide / règles du jeu -->
+    <!--  GUIDE  -->
     <div id="guide">
       <h1>🎮 Comment Jouer</h1>
-
-      <!-- cartes expliquant les modes de jeu -->
       <div class="card-row">
         <div class="rule-card">
           <h3>🧍 Solo</h3>
-          <p>Trouve les paires dans le temps imparti selon la difficulté.</p>
+          <p>Trouve toutes les paires. Ton score double à chaque paire trouvée.</p>
         </div>
         <div class="rule-card">
-          <h3>⚔️ Multijoueur / Bot</h3>
-          <p>Meilleur score sur 3 manches. La difficulté augmente à chaque tour.</p>
+          <h3>🤖 vs Bot</h3>
+          <p>Affronte le bot. Meilleur score à la fin gagne. Si tu trouves une paire, tu rejoues !</p>
+        </div>
+        <div class="rule-card">
+          <h3>⚔️ 1 vs 1</h3>
+          <p>Deux joueurs, même écran. Meilleur score gagne. Paire trouvée = rejouer !</p>
         </div>
       </div>
-
       <h1>🃏 Cartes spéciales</h1>
-
-      <!-- description des cartes spéciales avec leurs effets -->
       <div class="card-row">
         <div class="rule-card">
-          <h3>👁️ AkuAku (10 pts)</h3>
-          <p>Révèle une carte sans perdre ton tour</p>
+          <h3>👁️ AkuAku</h3>
+          <p>Révèle brièvement une carte sans perdre ton tour.</p>
         </div>
         <div class="rule-card">
-          <h3>🔄 Permutation (5 pts)</h3>
-          <p>Échange la position de 2 cartes</p>
+          <h3>🔄 Permutation</h3>
+          <p>Échange secrètement la position de 2 cartes.</p>
         </div>
       </div>
-
       <h1>📌 Règles</h1>
-
-      <!-- règles générales du jeu -->
       <div class="card-row">
         <div class="rule-card">
-          <p><b>Score :</b> chaque match réussi double le score (base 1)</p>
+          <p><b>Score :</b> Score final basé sur tes paires, ton temps et tes mouvements.</p>
         </div>
         <div class="rule-card">
-          <p><b>Achat :</b> utilise ton score pour acheter des cartes</p>
+          <p><b>Paire trouvée :</b> tu rejoues immédiatement !</p>
         </div>
         <div class="rule-card">
-          <p><b>Rareté :</b> plus rare = plus cher</p>
-        </div>
-        <div class="rule-card">
-          <p><b>2 joueurs :</b> meilleur score gagne si temps écoulé</p>
+          <p><b>Pas de paire :</b> c'est au tour de l'adversaire.</p>
         </div>
       </div>
     </div>
 
-    <!-- menu principal pour choisir la difficulté -->
+    <!--  MENU PRINCIPAL  -->
     <div id="menu">
       <h1>🎮 Jeu de Mémoire</h1>
-      <!-- chaque bouton lance le jeu avec une grille différente -->
-      <button onclick="startGame(4,3)">Facile (4x3)</button>
-      <button onclick="startGame(4,4)">Moyen (4x4)</button>
-      <button onclick="startGame(5,4)">Difficile (5x4)</button>
+
+      <!-- étape 1 : choix du mode -->
+      <div id="choixMode">
+        <p>Choisis ton mode de jeu :</p>
+        <button onclick="choisirMode('solo')">Solo</button>
+        <button onclick="choisirMode('bot')">vs Bot</button>
+        <button onclick="choisirMode('1v1')">1 vs 1</button>
+      </div>
+
+      <!-- étape 2 : choix de la difficulté (caché au départ) -->
+      <div id="choixDifficulte" style="display:none;">
+        <p id="labelMode"></p>
+        <button onclick="demarrerPartie(4,3)" style="color:green">Facile (4x3)</button>
+        <button onclick="demarrerPartie(4,4)" style="color:yellow">Moyen (4x4)</button>
+        <button onclick="demarrerPartie(5,4)" style="color:red">Difficile (5x4)</button>
+        <button onclick="retourMenu()" id="btnRetour">↩️ Retour</button>
+      </div>
     </div>
 
-    <!-- zone principale du jeu (cachée au départ) -->
+    <!--  ZONE DE JEU  -->
     <div id="home">
 
-      <!-- affichage du score et du nombre de mouvements -->
+      <!-- barre d'infos : scores, tour, mouvements -->
       <div class="info">
-        <div class="score" >Score : 0</div>
-        <div class="bouge">Bouges : 0</div>
+        <!-- score joueur 1 / solo -->
+        <div class="score">Score : 0</div>
+        <!-- timer pour compter le temps -->
+        <div class="timer">00:00</div>
+        <!-- indicateur de tour, caché en mode solo -->
+        <div class="indicateur-tour" style="display:none;">🟠 Ton tour</div>
+        <!-- score joueur 2 / bot, caché en mode solo -->
+        <div class="score-deux" style="display:none;">J2 : 0</div>
+        <!-- compteur de mouvements -->
+        <div class="bouge">Mouvements : 0</div>
       </div>
 
-      <!-- grille de cartes générée dynamiquement par le JavaScript -->
+      <!-- grille de 20 cartes, remplie dynamiquement par le JS -->
       <div class="container">
-        <!-- 20 cartes au total, les images sont chargées via le script -->
-        <div class="card"><img src=""></div>
-        <div class="card"><img src=""></div>
-        <div class="card"><img src=""></div>
-        <div class="card"><img src=""></div>
-        <div class="card"><img src=""></div>
-        <div class="card"><img src=""></div>
-        <div class="card"><img src=""></div>
-        <div class="card"><img src=""></div>
-        <div class="card"><img src=""></div>
-        <div class="card"><img src=""></div>
-        <div class="card"><img src=""></div>
-        <div class="card"><img src=""></div>
-        <div class="card"><img src=""></div>
-        <div class="card"><img src=""></div>
-        <div class="card"><img src=""></div>
-        <div class="card"><img src=""></div>
-        <div class="card"><img src=""></div>
-        <div class="card"><img src=""></div>
-        <div class="card"><img src=""></div>
-        <div class="card"><img src=""></div>
+        <div class="card"><img src="" alt="carte"></div>
+        <div class="card"><img src="" alt="carte"></div>
+        <div class="card"><img src="" alt="carte"></div>
+        <div class="card"><img src="" alt="carte"></div>
+        <div class="card"><img src="" alt="carte"></div>
+        <div class="card"><img src="" alt="carte"></div>
+        <div class="card"><img src="" alt="carte"></div>
+        <div class="card"><img src="" alt="carte"></div>
+        <div class="card"><img src="" alt="carte"></div>
+        <div class="card"><img src="" alt="carte"></div>
+        <div class="card"><img src="" alt="carte"></div>
+        <div class="card"><img src="" alt="carte"></div>
+        <div class="card"><img src="" alt="carte"></div>
+        <div class="card"><img src="" alt="carte"></div>
+        <div class="card"><img src="" alt="carte"></div>
+        <div class="card"><img src="" alt="carte"></div>
+        <div class="card"><img src="" alt="carte"></div>
+        <div class="card"><img src="" alt="carte"></div>
+        <div class="card"><img src="" alt="carte"></div>
+        <div class="card"><img src="" alt="carte"></div>
       </div>
-
       <!-- boutons des pouvoirs spéciaux -->
       <div class="powerups">
-        <!-- pouvoir AkuAku : révèle une carte -->
         <button id="revealBtn">
           <img src="CardImages/akuaku.png" alt="révéler">
         </button>
-        <!-- pouvoir permutation : échange deux cartes -->
         <button id="changeBtn">
           <img src="CardImages/swap.png" alt="échanger">
         </button>
       </div>
-
     </div>
+
+    <!--  ÉCRAN DE VICTOIRE  -->
+    <!-- overlay fixe qui apparaît à la fin de chaque partie -->
+    <div id="ecranVictoire">
+      <div id="contenuVictoire">
+        <!-- titre changé dynamiquement selon le résultat -->
+        <h1 id="titreVictoire">🎉</h1>
+        <p id="messageVictoire"></p>
+        <p id="scoresFinaux"></p>
+        <!-- zone pour sauvegarder dans le leaderboard -->
+        <div id="zoneSauvegarde">
+          <input type="text" id="champPrenom" placeholder="Entre ton nom..." maxlength="20">
+          <button onclick="sauvegarderScore()">Sauvegarder mon score</button>
+        </div>
+        <button onclick="retournerAuMenu()">Menu Principal</button>
+      </div>
+    </div>
+
   </main>
 
-  <!-- script principal qui gère toute la logique du jeu -->
+  <!-- script principal du jeu -->
   <script src="script.js"></script>
 </body>
 </html>
