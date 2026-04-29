@@ -158,26 +158,25 @@ header img {
    ==================================================== */
 
 .pinkleftside {
-  position: absolute;
-  top: 100px;
+  position: fixed;
+  top: 0;
+  bottom: 0;
   background-color: #FF3F7F;
   z-index: -1;
   width: 100px;
-  height: 100vh;
   animation: rgbFlow 10s infinite;
 }
 
 .pinkrightside {
-  position: absolute;
-  top: 100px;
+  position: fixed;
+  top: 0;
+  bottom: 0;
   right: 0;
   background-color: #FF3F7F;
   z-index: -1;
   width: 100px;
-  height: 100vh;
   animation: rgbFlow 10s infinite;
 }
-
 /* ====================================================
    MENU PRINCIPAL
    ==================================================== */
